@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 # Project
-data
+/data
 *.gz
