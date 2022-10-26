@@ -8,7 +8,7 @@ import numpy as np
 from skimage.transform import resize
 from torch.utils.data import Dataset
 
-import data.data_feature as data_feature
+import corigami.data.data_feature as data_feature
 
 class ChromosomeDataset(Dataset):
     '''

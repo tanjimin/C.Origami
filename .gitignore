@@ -130,4 +130,5 @@ dmypy.json
 
 # Project
 /data
+outputs
 *.gz

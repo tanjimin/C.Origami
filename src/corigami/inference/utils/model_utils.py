@@ -3,7 +3,7 @@ import torch
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-import model.corigami_models as corigami_models
+import corigami.model.corigami_models as corigami_models
 
 def load_default(model_path):
     model_name = 'ConvTransModel'
