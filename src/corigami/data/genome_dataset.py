@@ -1,7 +1,7 @@
 import pandas as pd
 from torch.utils.data import Dataset
-from data.chromosome_dataset import ChromosomeDataset
-import data.data_feature as data_feature
+from corigami.data.chromosome_dataset import ChromosomeDataset
+import corigami.data.data_feature as data_feature
 
 class GenomeDataset(Dataset):
     '''

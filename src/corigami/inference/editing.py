@@ -4,8 +4,8 @@ import pandas as pd
 import sys
 import torch
 
-import inference.utils.inference_utils as infer
-from inference.utils import plot_utils 
+import corigami.inference.utils.inference_utils as infer
+from corigami.inference.utils import plot_utils 
 
 import argparse
 

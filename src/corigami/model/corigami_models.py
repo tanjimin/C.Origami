@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-import model.blocks as blocks
+import corigami.model.blocks as blocks
 
 class ConvModel(nn.Module):
     def __init__(self, num_genomic_features, mid_hidden = 256):

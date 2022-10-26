@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 import torch
 
-from inference.utils.model_utils import load_default
+from corigami.inference.utils.model_utils import load_default
 
 def preprocess_default(seq, ctcf, atac):
     # Process sequence
@@ -48,7 +48,7 @@ def load_region(chr_name, start, seq_path, ctcf_path, atac_path, window = 209715
 
 
 def load_data_default(chr_name, seq_path, ctcf_path, atac_path):
-    from data.data_feature import SequenceFeature, GenomicFeature
+    from corigami.data.data_feature import SequenceFeature, GenomicFeature
     seq_chr_path = os.path.join(seq_path, f'{chr_name}.fa.gz')
     seq = SequenceFeature(path = seq_chr_path)
     ctcf = GenomicFeature(path = ctcf_path, norm = None)
@@ -66,7 +66,7 @@ def get_data_at_interval(chr_name, start, end, seq, ctcf, atac):
     return seq_region, ctcf_region, atac_region
 
 def load_data(chr_name, celltype):
-    import data.chromosome_dataset as chr_dataset
+    import corigami.data.chromosome_dataset as chr_dataset
     data_root = '../../data/data/'
     assembly = 'hg38'
     celltype_root = f'{data_root}/{assembly}/{celltype}'
