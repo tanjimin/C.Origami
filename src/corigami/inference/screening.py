@@ -108,13 +108,6 @@ def screening(output_path, celltype, chr_name, screen_start, screen_end, perturb
     figure = plot.plot()
     plot.save_data(figure, save_pred, save_deletion, save_diff, save_impact_score, save_bedgraph)
 
-def point_screening(output_path, celltype, chr_name, start, deletion_start, deletion_width, seq_path, ctcf_path, atac_path):
-    # Store data and model in memory
-    seq, ctcf, atac = infer.load_data_default(chr_name, seq_path, ctcf_path, atac_path)
-    model = model_utils.load_default()
-    pred, pred_deletion, diff_map = predict_difference(chr_name, start, deletion_start, deletion_width, model, seq, ctcf, atac)
-    #plot_combination(output_path, celltype, chr_name, start, deletion_start, deletion_width, pred, pred_deletion, diff_map)
-
 def predict_difference(chr_name, start, deletion_start, deletion_width, model, seq, ctcf, atac):
     # Define window which accomodates deletion
     end = start + 2097152 + deletion_width

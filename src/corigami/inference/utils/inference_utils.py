@@ -15,23 +15,6 @@ def preprocess_default(seq, ctcf, atac):
     # Merge inputs
     features = [ctcf, atac_log]
     features = torch.cat([feat.unsqueeze(0).unsqueeze(2) for feat in features], dim = 2)
-    inputs = torch.cat([seq, features], dim = 2).cuda()
-    # Move input to gpu if available
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    inputs = inputs.to(device)
-    return inputs
-
-# User needs to make sure genome assembly numbers match
-def preprocess(datapoint):
-    seq, (ctcf, atac), mat = datapoint
-    # Process sequence
-    seq = torch.tensor(seq).unsqueeze(0) 
-    # Normailze ctcf and atac-seq
-    ctcf = torch.tensor(np.nan_to_num(ctcf, 0)) # Important! replace nan with 0
-    atac_log = torch.tensor(atac) # Important! replace nan with 0
-    # Merge inputs
-    features = [ctcf, atac_log]
-    features = torch.cat([feat.unsqueeze(0).unsqueeze(2) for feat in features], dim = 2)
     inputs = torch.cat([seq, features], dim = 2)
     # Move input to gpu if available
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -65,25 +48,8 @@ def get_data_at_interval(chr_name, start, end, seq, ctcf, atac):
     atac_region = atac.get(chr_name, start, end)
     return seq_region, ctcf_region, atac_region
 
-def load_data(chr_name, celltype):
-    import corigami.data.chromosome_dataset as chr_dataset
-    data_root = '../../data/data/'
-    assembly = 'hg38'
-    celltype_root = f'{data_root}/{assembly}/{celltype}'
-
-    genomic_features = [{'file_name' : 'ctcf_log2fc.bw',
-                            'norm' : None},
-                        {'file_name' : 'atac.bw',
-                            'norm' : 'log'}]
-
-    feature_list = chr_dataset.get_feature_list(f'{celltype_root}/genomic_features', genomic_features)
-
-    omit_regions = [[0, 0]]
-    dataset = chr_dataset.ChromosomeDataset(celltype_root, chr_name, omit_regions, feature_list, use_aug = False)
-    return dataset
-
 ## Load Model ##
-def single_prediction(seq_region, ctcf_region, atac_region, model_path):
+def prediction(seq_region, ctcf_region, atac_region, model_path):
     model = load_default(model_path)
     inputs = preprocess_default(seq_region, ctcf_region, atac_region)
     pred = model(inputs)[0].detach().cpu().numpy()

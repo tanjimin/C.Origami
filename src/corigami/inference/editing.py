@@ -64,7 +64,7 @@ def single_deletion(output_path, celltype, chr_name, start, deletion_start, dele
             deletion_start, deletion_width, seq_region, ctcf_region, 
             atac_region, end_padding_type)
     # Prediction
-    pred = infer.single_prediction(seq_region, ctcf_region, atac_region, model_path)
+    pred = infer.prediction(seq_region, ctcf_region, atac_region, model_path)
     # Initialize plotting class
     plot = plot_utils.MatrixPlotDeletion(output_path, pred, 'deletion', 
             celltype, chr_name, start, deletion_start, deletion_width, 
