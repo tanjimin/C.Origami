@@ -86,6 +86,11 @@ Prediction will produce both an image of the 2MB window as well as a numpy matri
     --atac          Path to the folder where the ATAC-seq .bw files are stored
 ```
 
+`An example of a C.Origami predicted (2MB window) Hi-C matrix for the IMR-90 cell line at chromosome 2 with start position 500,000:`
+<p align="center">
+  <img  src="https://github.com/tanjimin/C.Origami-release/blob/dev/src/corigami/examples/imgs/chr2_500000.png">
+  </p>
+
 ## Editing/Perturbation
 
 For now the only perturbation implemented is deletion. Specify the same parameters as before along with specific deletion parameters. If you want to do multiple deletions, you can specify in the config by creating additional start and end positions. 
@@ -110,6 +115,12 @@ For now the only perturbation implemented is deletion. Specify the same paramete
     --padding       Padding type, either zero or follow. Using zero: the missing region at the end will be padded with zero for ctcf and atac seq, while sequence will be padded with N (unknown necleotide). Using follow: the end will be padded with features in the following region
     --hide-line     Remove the line showing deletion site
 ```
+
+`An example of a C.Origami predicted (2MB window) Hi-C matrix for the IMR-90 cell line at chromosome 2 with start position 500,000 and a deletion from 1.5MB to 1.6MB (100,000 basepairs deleted):`
+<p align="center">
+  <img  src="https://github.com/tanjimin/C.Origami-release/blob/dev/src/corigami/examples/imgs/chr2_500000_del_1500000_100000_padding_zero.png">
+  </p>
+
 ## Screening
 
 In silico genetic screening can be used to see what regions of perturbation lead to the greatest impact on the prediction. Running this task will result in a bedgraph file consisting of the chr number, start position, end position, and impact score. The more impact the perturbation had, the higher the impact score.
@@ -144,8 +155,12 @@ Screening can be done only for one chromosome at a time. The end position unless
     --save-frames         Save each deletion instance with png and npy (Could be taxing on computation and screening, not recommended).')
     --padding             Padding type, either zero or follow. Using zero: the missing region at the end will be padded with zero for ctcf and atac seq, while sequence will be padded with N (unknown necleotide). Using follow: the end will be padded with features in the following region
 ```
-
 **Please note that screening can be very computationally intensive especially when screening at a 1 Kb resolution or less. For instance, screening on chromosome 8, a medium-size chromosome which has a length of 146Mb, requires the model to make 146Mb / 1Kb * 2 predictions = 292,000 separate predictions.**
+
+`An example of a barplot representing the impact score of each perturbation. C.Origami screened chromosome 2 from position 1.25 MB to 2.25 MB with a perturbation of 1000 basepairs (perturb-width) being made every 1000 basepairs (step-size):`
+<p align="center">
+  <img  src="https://github.com/tanjimin/C.Origami-release/blob/dev/src/corigami/examples/imgs/chr2_screen_1250000_2250000_width_1000_step_1000.png">
+  </p>
 
 ## License
 
