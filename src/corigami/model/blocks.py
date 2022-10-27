@@ -144,11 +144,9 @@ class ResBlockDilated1D(nn.Module):
                         nn.Conv1d(hidden, hidden, size, padding = pad_len, 
                             dilation = dil),
                         nn.Dropout(dropout_p),
-                        #nn.BatchNorm1d(hidden),
                         nn.ReLU(),
                         nn.Conv1d(hidden, hidden, size, padding = pad_len,
                             dilation = dil),
-                        #nn.BatchNorm1d(hidden),
                         nn.Dropout(dropout_p),
                         )
         self.relu = nn.ReLU()
@@ -250,7 +248,6 @@ class AttnModule(nn.Module):
     def forward(self, x):
         x = self.pos_encoder(x)
         output = self.module(x)
-        #out = res + x
         return output
 
     def inference(self, x):
@@ -288,7 +285,6 @@ class PositionalEncoding(nn.Module):
             x: Tensor, shape [seq_len, batch_size, embedding_dim]
         """
         x = x + self.pe[:x.size(0)]
-        #import pdb; pdb.set_trace()
         return self.dropout(x)
 
 if __name__ == '__main__':
