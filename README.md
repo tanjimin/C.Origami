@@ -15,8 +15,10 @@ Publications associated with the C. Origami project can be found
 ## Documentation
 
 ### CTCF/ATAC/DNA data 
-In order to use our pipeline we require the sequencing data to be pre-processed. The input for both the CTCF and ATAC data should be in the form of a bigwig (bw) file. The bigwig should be normalized to the total number of reads and should allow visual inspection of the data using an application such as [IGV](https://igv.org).
-C.Origami has been trained on the human (hg38) and mouse (mm10) genome. You can download each chromosome along with a json file containing the length of each chromosome by running our python script under `src/preprocessing/dna_sequence/download.sh`.
+In order to use our pipeline we require the sequencing data to be pre-processed. The input for both the CTCF and ATAC data should be in the form of a bigwig (bw) file. The bigwig should be normalized to the total number of reads. Data quality can be inspected using an applications such as [IGV](https://igv.org).
+C.Origami has been trained on the human IMR-90 cell line (hg38 assembly). You can download the training data here: 
+
+TODO
 
 For human chromosomes:
 ```bash
@@ -35,7 +37,7 @@ conda activate corigami
 ```
 ### Install the package and other requirements
 ```bash
-pip install torch torchvision pybigwig pytorch_lightning transformers pandas matplotlib
+pip install torch torchvision pybigwig pytorch_lightning pandas matplotlib
 ```
 
 ### Installing Directly from the Github
@@ -48,7 +50,7 @@ git clone https://github.com/tanjimin/C.Origami-release.git
 
 If you wish to use our pretrained model, you may download the model and other files needed for running C.Origami by running the command below. You can also train your own model instead of using ours. See the [training](#Training) section below.
 
-Our model is trained on IMR-90 cell line and is :
+Our model is trained on IMR-90 cell line. The training data can be accessed here:
 ```bash
 wget -O data https://www.dropbox.com/s/oor01snnekyh4s5/imr90_data.tar.gz?dl=0
 ```
