@@ -1,4 +1,4 @@
-# c-origami
+# C.Origami
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/tanjimin/C.Origami-release/blob/dev/LICENSE)
 
