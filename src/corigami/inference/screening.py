@@ -15,32 +15,32 @@ def main():
     
     # Output location
     parser.add_argument('--out', dest='output_path', 
-                        default='./outputs',
-                        help='output path for storing results')
+                        default='outputs',
+                        help='output path for storing results (default: %(default)s)')
 
     # Location related params
     parser.add_argument('--celltype', dest='celltype', 
-                        help='Sample cell type for prediction, used for output separation')
+                        help='Sample cell type for prediction, used for output separation', required=True)
     parser.add_argument('--chr', dest='chr_name', 
-                        help='Chromosome for prediction')
+                        help='Chromosome for prediction', required=True)
     parser.add_argument('--model', dest='model_path', 
-                        help='Path to the model checkpoint')
+                        help='Path to the model checkpoint', required=True)
     parser.add_argument('--seq', dest='seq_path', 
-                        help='Path to the folder where the sequence .fa.gz files are stored')
+                        help='Path to the folder where the sequence .fa.gz files are stored', required=True)
     parser.add_argument('--ctcf', dest='ctcf_path', 
-                        help='Path to the folder where the CTCF ChIP-seq .bw files are stored')
+                        help='Path to the folder where the CTCF ChIP-seq .bw files are stored', required=True)
     parser.add_argument('--atac', dest='atac_path', 
-                        help='Path to the folder where the ATAC-seq .bw files are stored')
+                        help='Path to the folder where the ATAC-seq .bw files are stored', required=True)
 
     # Screening related params
     parser.add_argument('--screen-start', dest='screen_start', type=int,
-                        help='Starting point for screening.')
+                        help='Starting point for screening.', required=True)
     parser.add_argument('--screen-end', dest='screen_end', type=int,
-                        help='Ending point for screening.')
+                        help='Ending point for screening.', required=True)
     parser.add_argument('--perturb-width', dest='perturb_width', type=int,
-                        help='Width of perturbation used for screening.')
+                        help='Width of perturbation used for screening.', required=True)
     parser.add_argument('--step-size', dest='step_size', type=int,
-                        help='step size of perturbations in screening.')
+                        help='step size of perturbations in screening.', required=True)
 
     # Saving related params
     parser.add_argument('--plot-impact-score', dest='plot_impact_score', 
@@ -48,29 +48,29 @@ def main():
                         help='Plot impact score and save png. (Not recommended for large scale screening (>10000 perturbations)')
     parser.add_argument('--save-pred', dest='save_pred', 
                         action = 'store_true',
-                        help='Save prediction tensor')
+                        help='Save prediction tensor (default: %(default)s)')
     parser.add_argument('--save-perturbation', dest='save_perturbation', 
                         action = 'store_true',
-                        help='Save perturbed tensor')
+                        help='Save perturbed tensor (default: %(default)s)')
     parser.add_argument('--save-diff', dest='save_diff', 
                         action = 'store_true',
-                        help='Save difference tensor')
+                        help='Save difference tensor (default: %(default)s)')
     parser.add_argument('--save-impact-score', dest='save_impact_score', 
                         action = 'store_true',
-                        help='Save impact score array')
+                        help='Save impact score array (default: %(default)s)')
     parser.add_argument('--save-bedgraph', dest='save_bedgraph', 
                         action = 'store_true',
-                        help='Save bedgraph file for impact score')
+                        help='Save bedgraph file for impact score (default: %(default)s)')
     parser.add_argument('--save-frames', dest='plot_frames', 
                         action = 'store_true',
-                        help='Save each deletion instance with png and npy (Could be taxing on computation and screening, not recommended).')
+                        help='Save each deletion instance with png and npy (Could be taxing on computation and screening, not recommended) (default: %(default)s)')
 
     # Perturbation related params
     parser.add_argument('--padding', dest='end_padding_type', 
                         default='zero',
-                        help='Padding type, either zero or follow. Using zero: the missing region at the end will be padded with zero for ctcf and atac seq, while sequence will be padded with N (unknown necleotide). Using follow: the end will be padded with features in the following region.')
+                        help='Padding type, either zero or follow. Using zero: the missing region at the end will be padded with zero for ctcf and atac seq, while sequence will be padded with N (unknown necleotide). Using follow: the end will be padded with features in the following region (default: %(default)s)')
 
-    args = parser.parse_args()
+    args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
     screening(args.output_path, args.celltype, args.chr_name, args.screen_start, 
               args.screen_end, args.perturb_width, args.step_size,
               args.model_path,
