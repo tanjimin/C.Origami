@@ -8,21 +8,12 @@ C.Origami is a deep neural network model enables *de novo* cell type-specific ch
 
 ## Dependencies and Installation
 
-### Create and activate a new virtual environment
+### Create a new conda environment for C.Origami and install dependencies
 ```bash
-conda create -n corigami python=3.6
+conda create -n corigami python=3.9
 conda activate corigami
-```
-### Install the package and other requirements
-```bash
-pip install torch torchvision pybigwig pytorch_lightning pandas matplotlib
-```
 
-### Installing Directly from the Github
-
-If you want to install directly from the GitHub source, clone the repository:
-```
-git clone https://github.com/tanjimin/C.Origami-release.git
+pip install torch==1.12.0 torchvision==0.13.0 pandas==1.3.0 matplotlib==3.3.2 pybigwig==0.3.18 omegaconf==2.1.1
 ```
 
 ## Download dataset files and pretrained model weights
