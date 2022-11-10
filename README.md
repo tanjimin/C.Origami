@@ -1,33 +1,21 @@
 # C.Origami
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/tanjimin/C.Origami-release/blob/dev/LICENSE)
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/tanjimin/C.Origami/blob/dev/LICENSE)
 
 [Models](#Download-model-and-other-relevant-resource-files) |
-[GitHub](https://github.com/tanjimin/C.Origami-release) |
+[GitHub](https://github.com/tanjimin/C.Origami) |
 [Publications](#list-of-papers)
 
-C-Origami is a deep neural network model for predicting de novo cell type-specific chromatin architecture. By incorporating DNA sequence, CTCF binding, and chromatin accessibility profiles, C-Origami achieves accurate cell type-specific prediction.
-
-Publications associated with the C. Origami project can be found
-[at the end of this README](#list-of-papers).
-
+C.Origami is a deep neural network model enables *de novo* cell type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
 
 ## Documentation
 
-### CTCF/ATAC/DNA data 
+### DNA sequence, CTCF ChIP-seq, and ATAC-seq data 
 In order to use our pipeline we require the sequencing data to be pre-processed. The input for both the CTCF and ATAC data should be in the form of a bigwig (bw) file. The bigwig should be normalized to the total number of reads. Data quality can be inspected using an applications such as [IGV](https://igv.org).
-C.Origami has been trained on the human IMR-90 cell line (hg38 assembly). You can download the training data here: 
+C.Origami has been trained on the human IMR-90 cell line (hg38 assembly). Before inference, please download [IMR-90 data]() and change path according to the instruction.
 
-TODO
+To test *de novo* prediction performance on GM12878, you could download [GM12878 data add-on]().
 
-For human chromosomes:
-```bash
-download.sh hg38
-```
-For mouse chromosomes:
-```bash
-download.sh mm10
-```
 ## Dependencies and Installation
 
 ### Create and activate a new virtual environment
@@ -46,19 +34,6 @@ If you want to install directly from the GitHub source, clone the repository:
 ```
 git clone https://github.com/tanjimin/C.Origami-release.git
 ```
-## Download model and other relevant resource files
-
-If you wish to use our pretrained model, you may download the model and other files needed for running C.Origami by running the command below. You can also train your own model instead of using ours. See the [training](#Training) section below.
-
-Our model is trained on IMR-90 cell line. The training data can be accessed here:
-```bash
-wget -O data https://www.dropbox.com/s/oor01snnekyh4s5/imr90_data.tar.gz?dl=0
-```
-
-# Training
-
-TODO
-
 # Inference
 
 C.Origami can perform de novo prediction of cell type-specific chromatin architecture using both DNA sequence features and cell type-specific genomic information.
@@ -161,6 +136,19 @@ Screening can be done only for one chromosome at a time. The end position unless
 <p align="center">
   <img  src="https://github.com/tanjimin/C.Origami-release/blob/dev/src/corigami/examples/imgs/chr2_screen_1250000_2250000_width_1000_step_1000.png">
   </p>
+
+## Download model and other relevant resource files
+
+If you wish to use our pretrained model, you may download the model and other files needed for running C.Origami by running the command below. You can also train your own model instead of using ours. See the [training](#Training) section below.
+
+Our model is trained on IMR-90 cell line. The training data can be accessed here:
+```bash
+wget -O data https://www.dropbox.com/s/oor01snnekyh4s5/imr90_data.tar.gz?dl=0
+```
+
+# Training
+
+TODO
 
 ## License
 
