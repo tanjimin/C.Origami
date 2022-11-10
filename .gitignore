@@ -129,6 +129,6 @@ dmypy.json
 .pyre/
 
 # Project
-/data
+/corigami_data
 outputs
 *.gz
