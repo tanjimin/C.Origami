@@ -1,7 +1,5 @@
 # C.Origami
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/tanjimin/C.Origami/blob/dev/LICENSE)
-
 [Models](#Download-model-and-other-relevant-resource-files) |
 [GitHub](https://github.com/tanjimin/C.Origami) |
 [Publications](#list-of-papers)
@@ -34,6 +32,12 @@ If you want to install directly from the GitHub source, clone the repository:
 ```
 git clone https://github.com/tanjimin/C.Origami-release.git
 ```
+
+## Download model and other relevant resource files
+
+To run inference or training, you may download [corigami_data.tar.gz]() which contains the training data from IMR-90 cell line, and pretrained model weights. 
+To test performance on GM12878 *de novo* prediction, you need to additionally download the add-on data file [corigami_data_gm12878_add_on.tar.gz]() and unzip it under `corigami_data/data/hg38`.
+
 # Inference
 
 C.Origami can perform de novo prediction of cell type-specific chromatin architecture using both DNA sequence features and cell type-specific genomic information.
@@ -137,14 +141,6 @@ Screening can be done only for one chromosome at a time. The end position unless
   <img  src="https://github.com/tanjimin/C.Origami-release/blob/dev/src/corigami/examples/imgs/chr2_screen_1250000_2250000_width_1000_step_1000.png">
   </p>
 
-## Download model and other relevant resource files
-
-If you wish to use our pretrained model, you may download the model and other files needed for running C.Origami by running the command below. You can also train your own model instead of using ours. See the [training](#Training) section below.
-
-Our model is trained on IMR-90 cell line. The training data can be accessed here:
-```bash
-wget -O data https://www.dropbox.com/s/oor01snnekyh4s5/imr90_data.tar.gz?dl=0
-```
 
 # Training
 
