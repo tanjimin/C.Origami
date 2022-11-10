@@ -6,14 +6,6 @@
 
 C.Origami is a deep neural network model enables *de novo* cell type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
 
-## Documentation
-
-### DNA sequence, CTCF ChIP-seq, and ATAC-seq data 
-In order to use our pipeline we require the sequencing data to be pre-processed. The input for both the CTCF and ATAC data should be in the form of a bigwig (bw) file. The bigwig should be normalized to the total number of reads. Data quality can be inspected using an applications such as [IGV](https://igv.org).
-C.Origami has been trained on the human IMR-90 cell line (hg38 assembly). Before inference, please download [IMR-90 data]() and change path according to the instruction.
-
-To test *de novo* prediction performance on GM12878, you could download [GM12878 data add-on]().
-
 ## Dependencies and Installation
 
 ### Create and activate a new virtual environment
@@ -43,11 +35,17 @@ git clone https://github.com/tanjimin/C.Origami-release.git
 To run inference or training, you may download [corigami_data.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) which contains the training data from IMR-90 cell line, and pretrained model weights. 
 To test performance on GM12878 *de novo* prediction, you need to additionally download the add-on data file [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) and unzip it under `corigami_data/data/hg38`.
 
+### Prediction with DNA sequence, CTCF ChIP-seq, and ATAC-seq data 
+In order to use our pipeline we require the sequencing data to be pre-processed. Reference DNA sequence is included in the corigami_data file provided above.The input for both the CTCF and ATAC data should be in the form of a bigwig (bw) file. The bigwig should be normalized to the total number of reads. Data quality can be inspected using an applications such as [IGV](https://igv.org).
+
+
 # Inference
 
 C.Origami can perform de novo prediction of cell type-specific chromatin architecture using both DNA sequence features and cell type-specific genomic information.
 
-For any inference application, download one of our pre-trained models or use your own model. Inference allows you to pick between 3 tasks: **predict**, **perturbation**, or **screening**. Examples for each one and the required parameters are under the `examples` folder. 
+For any inference application, download one of our pre-trained models or use your own model. C.Origami is pre-trained on the human IMR-90 cell line (hg38 assembly). Before inference, please download dataset and change path according to the instruction.
+
+Inference allows you to pick between 3 tasks: **predict**, **perturbation**, or **screening**. Examples for each one and the required parameters are under the `examples` folder. 
 
 ## Prediction
 
@@ -149,11 +147,7 @@ Screening can be done only for one chromosome at a time. The end position unless
 
 # Training
 
-TODO
-
-## License
-
-C-Origami is MIT licensed, as found in the [LICENSE file](https://github.com/tanjimin/C.Origami-release/blob/dev/LICENSE).
+Coming up soon!
 
 ## Cite
 
