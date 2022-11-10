@@ -149,11 +149,6 @@ Screening can be done only for one chromosome at a time. The end position unless
 
 # Training
 
-TODO
-
-## License
-
-C-Origami is MIT licensed, as found in the [LICENSE file](https://github.com/tanjimin/C.Origami-release/blob/dev/LICENSE).
 
 ## Cite
 
