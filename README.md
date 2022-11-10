@@ -33,10 +33,15 @@ If you want to install directly from the GitHub source, clone the repository:
 git clone https://github.com/tanjimin/C.Origami-release.git
 ```
 
-## Download model and other relevant resource files
+## Download dataset files and pretrained model weights
 
-To run inference or training, you may download [corigami_data.tar.gz]() which contains the training data from IMR-90 cell line, and pretrained model weights. 
-To test performance on GM12878 *de novo* prediction, you need to additionally download the add-on data file [corigami_data_gm12878_add_on.tar.gz]() and unzip it under `corigami_data/data/hg38`.
+| File name | Content | 
+| - | - | 
+| [corigami_data.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) | DNA reference sequence, CTCF ChIP-seq(IMR-90), ATAC-seq(IMR-90), Hi-C matrix(IMR-90), pretrained model weights | 
+| [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) | CTCF ChIP-seq(GM12878), ATAC-seq(GM12878), Hi-C matrix(GM12878) | 
+
+To run inference or training, you may download [corigami_data.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) which contains the training data from IMR-90 cell line, and pretrained model weights. 
+To test performance on GM12878 *de novo* prediction, you need to additionally download the add-on data file [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) and unzip it under `corigami_data/data/hg38`.
 
 # Inference
 
