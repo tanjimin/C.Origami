@@ -136,45 +136,6 @@ class Decoder(nn.Module):
         res_blocks = nn.Sequential(*blocks)
         return res_blocks
 
-class ResBlockDilated1D(nn.Module):
-    def __init__(self, size, hidden = 64, stride = 1, dil = 2, dropout_p = 0.1):
-        super(ResBlockDilated1D, self).__init__()
-        pad_len = dil 
-        self.res = nn.Sequential(
-                        nn.Conv1d(hidden, hidden, size, padding = pad_len, 
-                            dilation = dil),
-                        nn.Dropout(dropout_p),
-                        nn.ReLU(),
-                        nn.Conv1d(hidden, hidden, size, padding = pad_len,
-                            dilation = dil),
-                        nn.Dropout(dropout_p),
-                        )
-        self.relu = nn.ReLU()
-
-    def forward(self, x):
-        identity = x 
-        res_out = self.res(x)
-        out = self.relu(res_out + identity)
-        return out
-
-class DilatedModule(nn.Module):
-    def __init__(self, hidden = 128, layers = 8, filter_size = 3):
-        super(DilatedModule, self).__init__()
-        self.filter_size = filter_size
-        self.module = self.get_res_blocks(layers, hidden)
-
-    def get_res_blocks(self, n, hidden):
-        blocks = []
-        for i in range(n):
-            dilation = 2 ** (i + 1)
-            blocks.append(ResBlockDilated1D(self.filter_size, hidden = hidden, dil = dilation))
-        res_blocks = nn.Sequential(*blocks)
-        return res_blocks
-
-    def forward(self, x):
-        output = self.module(x)
-        return output
-
 class TransformerLayer(torch.nn.TransformerEncoderLayer):
     # Pre-LN structure
     
@@ -230,6 +191,26 @@ class TransformerEncoder(torch.nn.TransformerEncoder):
     def _get_clones(self, module, N):
         return torch.nn.modules.ModuleList([copy.deepcopy(module) for i in range(N)])
 
+class PositionalEncoding(nn.Module):
+
+    def __init__(self, hidden, dropout = 0.1, max_len = 256):
+        super().__init__()
+        self.dropout = nn.Dropout(p=dropout)
+        position = torch.arange(max_len).unsqueeze(1)
+        div_term = torch.exp(torch.arange(0, hidden, 2) * (-np.log(10000.0) / hidden))
+        pe = torch.zeros(max_len, 1, hidden)
+        pe[:, 0, 0::2] = torch.sin(position * div_term)
+        pe[:, 0, 1::2] = torch.cos(position * div_term)
+        self.register_buffer('pe', pe)
+
+    def forward(self, x):
+        """
+        Args:
+            x: Tensor, shape [seq_len, batch_size, embedding_dim]
+        """
+        x = x + self.pe[:x.size(0)]
+        return self.dropout(x)
+
 class AttnModule(nn.Module):
     def __init__(self, hidden = 128, layers = 8, record_attn = False, inpu_dim = 256):
         super(AttnModule, self).__init__()
@@ -252,40 +233,6 @@ class AttnModule(nn.Module):
 
     def inference(self, x):
         return self.module(x)
-
-class AttnSkipModule(AttnModule):
-
-    def forward(self, x):
-        skip = x
-        src = self.pos_encoder(x)
-        if self.record_attn:
-            src, attn = self.module(src)
-            output = src + skip
-            return output, attn
-        else:
-            src = self.module(src)
-            output = src + skip
-            return output
-
-class PositionalEncoding(nn.Module):
-
-    def __init__(self, hidden, dropout = 0.1, max_len = 256):
-        super().__init__()
-        self.dropout = nn.Dropout(p=dropout)
-        position = torch.arange(max_len).unsqueeze(1)
-        div_term = torch.exp(torch.arange(0, hidden, 2) * (-np.log(10000.0) / hidden))
-        pe = torch.zeros(max_len, 1, hidden)
-        pe[:, 0, 0::2] = torch.sin(position * div_term)
-        pe[:, 0, 1::2] = torch.cos(position * div_term)
-        self.register_buffer('pe', pe)
-
-    def forward(self, x):
-        """
-        Args:
-            x: Tensor, shape [seq_len, batch_size, embedding_dim]
-        """
-        x = x + self.pe[:x.size(0)]
-        return self.dropout(x)
 
 if __name__ == '__main__':
     main()
