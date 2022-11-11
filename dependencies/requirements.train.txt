@@ -1,2 +1,0 @@
-pytorch_lightning>=1.7.3
-torchvision>=0.12.0

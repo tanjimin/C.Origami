@@ -1,9 +1,0 @@
-numpy==1.22.4
-torch==1.11.0
-pandas==1.4.2
-matplotlib==3.5.2	
-omegaconf==2.2.2
-tqdm==4.64.0
-#pybigwig==0.3.18 conda install pybigwig -c conda-forge -c bioconda
-#hydra-core>=1.2.0
-

@@ -13,7 +13,7 @@ C.Origami is a deep neural network model enables *de novo* cell type-specific ch
 conda create -n corigami python=3.9
 conda activate corigami
 
-pip install torch==1.12.0 torchvision==0.13.0 pandas==1.3.0 matplotlib==3.3.2 pybigwig==0.3.18 omegaconf==2.1.1
+pip install torch==1.12.0 torchvision==0.13.0 pandas==1.3.0 matplotlib==3.3.2 pybigwig==0.3.18 omegaconf==2.1.1 tqdm==4.64.0
 ```
 
 ## Download dataset files and pretrained model weights
