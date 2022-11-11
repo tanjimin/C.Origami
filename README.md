@@ -140,7 +140,7 @@ Screening can be done only for one chromosome at a time. The end position unless
 
 Coming up soon!
 
-## Cite
+## Citation
 
 If you use the C-Origami code in your project, please cite the bioRxiv paper:
 
