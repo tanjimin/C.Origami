@@ -17,6 +17,7 @@ def init_parser():
 
   # Data and Run Directories
   parser.add_argument('--seed', dest='run_seed', default=2077,
+                        type=int,
                         help='Random seed for training')
   parser.add_argument('--save_path', dest='run_save_path', default='checkpoints',
                         help='Path to the model checkpoint')
@@ -35,21 +36,27 @@ def init_parser():
 
   # Training Parameters
   parser.add_argument('--patience', dest='trainer_patience', default=80,
+                        type=int,
                         help='Epoches before early stopping')
   parser.add_argument('--max-epochs', dest='trainer_max_epochs', default=80,
+                        type=int,
                         help='Max epochs')
   parser.add_argument('--save-top-n', dest='trainer_save_top_n', default=20,
+                        type=int,
                         help='Top n models to save')
-  parser.add_argument('--num_gpu', dest='trainer_num_gpu', default=4,
+  parser.add_argument('--num-gpu', dest='trainer_num_gpu', default=4,
+                        type=int,
                         help='Number of GPUs to use')
 
   # Dataloader Parameters
-  parser.add_argument('--batch-size', dest='dataloader_batch_size', default=8,
+  parser.add_argument('--batch-size', dest='dataloader_batch_size', default=8, 
+                        type=int,
                         help='Batch size')
   parser.add_argument('--ddp-disabled', dest='dataloader_ddp_disabled',
                         action='store_false',
                         help='Using ddp, adjust batch size')
   parser.add_argument('--num-workers', dest='dataloader_num_workers', default=20,
+                        type=int,
                         help='Dataloader workers')
 
 
@@ -79,15 +86,6 @@ def init_training(args):
     # Assign seed
     pl.seed_everything(args.run_seed, workers=True)
     pl_module = TrainModule(args)
-    '''
-    pl_trainer = pl.Trainer(accelerator="gpu", devices=1,
-                            logger = [csv_logger, wandb_logger],
-                            callbacks = [early_stop_callback,
-                                         checkpoint_callback,
-                                         lr_monitor],
-                            max_epochs = args.trainer.max_epochs
-                            )
-    '''
     pl_trainer = pl.Trainer(strategy='ddp',
                             accelerator="gpu", devices=args.trainer_num_gpu,
                             gradient_clip_val=1,
@@ -209,17 +207,18 @@ class TrainModule(pl.LightningModule):
         else: # validation and test settings
             shuffle = False
         
+        batch_size = args.dataloader_batch_size
+        num_workers = args.dataloader_num_workers
+
         if not args.dataloader_ddp_disabled:
             gpus = args.trainer_num_gpu
             batch_size = int(args.dataloader_batch_size / gpus)
             num_workers = int(args.dataloader_num_workers / gpus) 
-        else:
-            batch_size = args.dataloader_batch_size
-            num_workers = args.dataloader_num_workers 
+
         dataloader = torch.utils.data.DataLoader(
             dataset,
-            shuffle = shuffle,
-            batch_size= batch_size,
+            shuffle=shuffle,
+            batch_size=batch_size,
             num_workers=num_workers,
             pin_memory=True,
             prefetch_factor=1,
