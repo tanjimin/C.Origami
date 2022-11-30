@@ -107,7 +107,7 @@ class GenomicFeature(GenomicFeatureSingleThread):
 
     def feature_to_npy(self, chr_name, start, end):
         with pbw.open(self.path) as bw_file:
-            signals = bw_file.values(chr_name, start, end)
+            signals = bw_file.values(chr_name, int(start), int(end))
         return np.array(signals)
 
     def length(self, chr_name):
