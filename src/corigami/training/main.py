@@ -219,6 +219,7 @@ class TrainModule(pl.LightningModule):
             dataset,
             shuffle=shuffle,
             batch_size=batch_size,
+
             num_workers=num_workers,
             pin_memory=True,
             prefetch_factor=1,
