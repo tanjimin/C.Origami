@@ -1,6 +1,6 @@
 [project]
-name = 'corigami-test'
-version = '0.0.1'
+name = 'corigami-demo'
+version = '0.0.2'
 description = 'C.Origami: cell type-specific chromatin structure prediction.'
 readme = 'README.md'
 keywords = ['deep learning', 'chromatin', 'prediction', 'cell type-specific', 'epigenetics']
@@ -18,6 +18,7 @@ dependencies = [
     'matplotlib>=3.3.2',
     'omegaconf>=2.1.1',
     'tqdm>=4.64.0',
+    'pybigwig==0.3.18',
 ]
 requires-python = ">=3.9"
 
@@ -26,7 +27,6 @@ training = [
     'pytorch-lightning==1.5.8',
     'lightning-bolts==0.5.0',
     'scikit-image>=0.19.3',
-    'pybigwig==0.3.18',
 ]
 
 [project.urls]
