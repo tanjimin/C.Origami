@@ -55,7 +55,7 @@ def init_parser():
   parser.add_argument('--ddp-disabled', dest='dataloader_ddp_disabled',
                         action='store_false',
                         help='Using ddp, adjust batch size')
-  parser.add_argument('--num-workers', dest='dataloader_num_workers', default=20,
+  parser.add_argument('--num-workers', dest='dataloader_num_workers', default=16,
                         type=int,
                         help='Dataloader workers')
 
