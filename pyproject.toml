@@ -1,6 +1,6 @@
 [project]
-name = 'corigami-demo'
-version = '0.0.2'
+name = 'corigami'
+version = '0.0.1'
 description = 'C.Origami: cell type-specific chromatin structure prediction.'
 readme = 'README.md'
 keywords = ['deep learning', 'chromatin', 'prediction', 'cell type-specific', 'epigenetics']
