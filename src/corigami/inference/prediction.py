@@ -6,7 +6,7 @@ import sys
 def main():
   
   parser = argparse.ArgumentParser(description='C.Origami Prediction Module.')
-  parser.add_argument('--out', dest='output_path', default='pred_outputs',
+  parser.add_argument('--out', dest='output_path', default='outputs',
           help='output path for storing results (default: %(default)s)')
   parser.add_argument('--celltype', dest='celltype', 
                         help='Sample cell type for prediction, used for output separation')
