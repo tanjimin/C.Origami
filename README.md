@@ -6,6 +6,10 @@
 
 C.Origami is a deep neural network model enables *de novo* cell type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
 
+## Google Colab
+
+To quickly try C.Origami, you can check out the [Colab Notebook](https://colab.research.google.com/drive/1AJtqKK-ovy9Degib6HIgswWo1PVUyNZr)
+
 ## Dependencies and Installation
 
 Create a new conda environment for C.Origami
