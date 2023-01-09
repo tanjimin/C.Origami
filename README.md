@@ -70,6 +70,10 @@ C.Origami can perform de novo prediction of cell type-specific chromatin archite
 
 For any inference application, download one of our pre-trained models or use your own model. C.Origami is pre-trained on the human IMR-90 cell line (hg38 assembly). Before inference, please download dataset and change path according to the instruction.
 
+## Custom input
+
+To use run inference on cell types other than IMR-90 or GM12878, you will need to recreate the corresponding CTCF ChIP-seq and ATAC-seq from fastq files. Please follow this [guide](https://github.com/tanjimin/C.Origami/tree/main/src/corigami/preprocessing/README.md) to generate the bigwig files you need.
+
 Inference allows you to pick between 3 tasks: **predict**, **perturbation**, or **screening**. Examples for each one and the required parameters are under the `examples` folder. 
 
 ## Prediction
@@ -111,13 +115,12 @@ For now the only perturbation implemented is deletion. Specify the same paramete
     -h --help       Show this screen.
     --out           Output path for storing results
     --celltype      Sample cell type for prediction, used for output separation
-    --chr           Chromosome for prediction')
+    --chr           Chromosome for prediction
     --start         Starting point for prediction (width defaults to 2097152 bp which is the input window size)
-    --model         Path to the model checkpoint')
+    --model         Path to the model checkpoint
     --seq           Path to the folder where the sequence .fa.gz files are stored
     --ctcf          Path to the folder where the CTCF ChIP-seq .bw files are stored
     --atac          Path to the folder where the ATAC-seq .bw files are stored
-
     --del-start     Starting point for deletion
     --del-width     Width for deletion
     --padding       Padding type, either zero or follow. Using zero: the missing region at the end will be padded with zero for ctcf and atac seq, while sequence will be padded with N (unknown necleotide). Using follow: the end will be padded with features in the following region
@@ -144,18 +147,17 @@ Screening can be done only for one chromosome at a time. The end position unless
     -h --help       Show this screen.
     --out           Output path for storing results
     --celltype      Sample cell type for prediction, used for output separation
-    --chr           Chromosome for prediction')
+    --chr           Chromosome for prediction
     --start         Starting point for prediction (width defaults to 2097152 bp which is the input window size)
-    --model         Path to the model checkpoint')
+    --model         Path to the model checkpoint
     --seq           Path to the folder where the sequence .fa.gz files are stored
     --ctcf          Path to the folder where the CTCF ChIP-seq .bw files are stored
     --atac          Path to the folder where the ATAC-seq .bw files are stored
-    
     --screen-start        Starting point for screening
     --screen-end          Ending point for screening
     --perturb-width       Width of perturbation used for screening
     --step-size           step size of perturbations in screening
-    --plot-impact-score   Plot impact score and save png. (Not recommended for large scale screening (>10000 perturbations)')
+    --plot-impact-score   Plot impact score and save png. (Not recommended for large scale screening, >10000 perturbations)
     --save-pred           Save prediction tensor
     --save-perturbation   Save perturbed tensor
     --save-diff           Save difference tensor
@@ -289,12 +291,11 @@ If you use the C-Origami code in your project, please cite the bioRxiv paper:
 
 The following lists titles of papers from the C-Origami project. 
 
-Cell type-specific prediction of 3D chromatin architecture
-Jimin Tan, Javier Rodriguez-Hernaez, Theodore Sakellaropoulos, Francesco Boccalatte, Iannis Aifantis, Jane Skok, David Fenyö, Bo Xia, Aristotelis Tsirigos
+Cell type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening
+Jimin Tan, Nina Shenker-Tauris, Javier Rodriguez-Hernaez, Eric Wang, Theodore Sakellaropoulos, Francesco Boccalatte, Palaniraja Thandapani, Jane Skok, Iannis Aifantis, David Fenyö, Bo Xia, Aristotelis Tsirigos
 bioRxiv 2022.03.05.483136; doi: https://doi.org/10.1101/2022.03.05.483136
 
-
-[Models](#Download-model-and-other-relevant-resource-files) |
+[Models](#download-model-and-other-relevant-resource-files) |
 [GitHub](https://github.com/tanjimin/C.Origami) |
 [Publications](#list-of-papers)
 
