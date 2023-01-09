@@ -132,3 +132,4 @@ dmypy.json
 /corigami_data
 outputs
 *.gz
+*.DS_Store

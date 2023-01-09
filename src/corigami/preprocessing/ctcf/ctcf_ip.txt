@@ -1,0 +1,2 @@
+https://www.encodeproject.org/files/ENCFF000YCK/@@download/ENCFF000YCK.fastq.gz
+https://www.encodeproject.org/files/ENCFF000YCM/@@download/ENCFF000YCM.fastq.gz
