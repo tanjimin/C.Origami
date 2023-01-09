@@ -4,7 +4,7 @@
 [GitHub](https://github.com/tanjimin/C.Origami) |
 [Publications](#list-of-papers)
 
-C.Origami is a deep neural network model enables *de novo* cell type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
+This is the official implementation of C.Origami model from *Cell type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening (Tan et al. 2023).* C.Origami is a deep neural network model enables *de novo* cell-type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
 
 ## Google Colab
 
@@ -20,17 +20,16 @@ conda activate corigami
 ```
 
 First install PyTorch according to the instructions on the
-[PyTorch Website](https://pytorch.org/get-started/) for your operating system
-and CUDA setup.  
+[PyTorch Website](https://pytorch.org/get-started/) for your operating system and CUDA setup.  
+
+To install C.Origami, run the following command according to your use cases:
 
 **For inference ONLY dependency use:**
-
 ```bash
 pip install corigami
 ```
 
 **For full dependency used for training use:**
-
 ```bash
  pip install corigami[training]
 ```
@@ -39,7 +38,7 @@ pip install corigami
 
 ### Installing Directly from Source
 
-If you want to install directly from the GitHub, git clone the repository and install all dependencies:
+If you want to install directly from the GitHub, git clone the repository and install all dependencies with this command:
 
 ```bash
 pip install torch==1.12.0 torchvision==0.13.0 pandas==1.3.0 matplotlib==3.3.2 pybigwig==0.3.18 omegaconf==2.1.1 tqdm==4.64.0
@@ -70,11 +69,11 @@ C.Origami can perform de novo prediction of cell type-specific chromatin archite
 
 For any inference application, download one of our pre-trained models or use your own model. C.Origami is pre-trained on the human IMR-90 cell line (hg38 assembly). Before inference, please download dataset and change path according to the instruction.
 
+Inference allows you to pick between 3 tasks: **predict**, **perturbation**, or **screening**. Examples for each one and the required parameters are under the `examples` folder. 
+
 ## Custom input
 
 To use run inference on cell types other than IMR-90 or GM12878, you will need to recreate the corresponding CTCF ChIP-seq and ATAC-seq from fastq files. Please follow this [guide](https://github.com/tanjimin/C.Origami/tree/main/src/corigami/preprocessing/README.md) to generate the bigwig files you need.
-
-Inference allows you to pick between 3 tasks: **predict**, **perturbation**, or **screening**. Examples for each one and the required parameters are under the `examples` folder. 
 
 ## Prediction
 
@@ -180,7 +179,7 @@ You may train your own model on another human or cell mouse line.
 
 ### Genomic Features
 
-You will need a bigwig file of the corresponding **atac** and **ctcf chip** sequence peaks. We recommend using [Seq-N-Slide](https://igordot.github.io/sns/) pipeline for processing raw fastqs into bigwigs using the `atac` or `chip` route. 
+You will need a bigwig file of the corresponding **atac** and **ctcf chip** sequence peaks. We recommend using [Seq-N-Slide](https://igordot.github.io/sns/) pipeline for processing raw fastqs into bigwigs using the `atac` or `chip` route. Please refer to this [guide](https://github.com/tanjimin/C.Origami/tree/main/src/corigami/preprocessing/README.md) for reference.
 
 ### Hi-C data 
 
@@ -298,4 +297,3 @@ bioRxiv 2022.03.05.483136; doi: https://doi.org/10.1101/2022.03.05.483136
 [Models](#download-model-and-other-relevant-resource-files) |
 [GitHub](https://github.com/tanjimin/C.Origami) |
 [Publications](#list-of-papers)
-
