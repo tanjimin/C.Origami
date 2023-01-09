@@ -179,7 +179,7 @@ You may train your own model on another human or cell mouse line.
 
 ### Genomic Features
 
-You will need a bigwig file of the corresponding **atac** and **ctcf chip** sequence peaks. We recommend using [Seq-N-Slide](https://igordot.github.io/sns/) pipeline for processing raw fastqs into bigwigs using the `atac` or `chip` route. Please refer to this [guide](https://github.com/tanjimin/C.Origami/tree/main/src/corigami/preprocessing/README.md) for reference.
+You will need a bigwig file of the corresponding **atac** and **ctcf chip** sequence peaks. We recommend using [Seq-N-Slide](https://igordot.github.io/sns/) pipeline for processing raw fastqs into bigwigs using the `atac` or `chip` route. Please refer to this [guide](https://github.com/tanjimin/C.Origami/tree/main/src/corigami/preprocessing/README.md).
 
 ### Hi-C data 
 
