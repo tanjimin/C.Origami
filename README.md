@@ -4,11 +4,11 @@
 [GitHub](https://github.com/tanjimin/C.Origami) |
 [Publications](#list-of-papers)
 
-This is the official implementation of C.Origami model from *Cell type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening (Tan et al. 2023).* C.Origami is a deep neural network model enables *de novo* cell-type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
+This is the official implementation of C.Origami model from *Cell type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening (Tan et al. *Nat Biotechnol* 2023. https://doi.org/10.1038/s41587-022-01612-8). C.Origami is a deep neural network model enables *de novo* cell-type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
 
 ## Google Colab
 
-To quickly try C.Origami, you can check out the [Colab Notebook](https://colab.research.google.com/drive/1AJtqKK-ovy9Degib6HIgswWo1PVUyNZr)
+To quickly try C.Origami, use the [Colab Notebook](https://colab.research.google.com/drive/1AJtqKK-ovy9Degib6HIgswWo1PVUyNZr)
 
 ## Dependencies and Installation
 
@@ -253,6 +253,7 @@ root
 **Note**: if you wish to use another assembly (e.g. mm10) please make sure your data directory is structured as above with the assembly name --> cell type, centrotelo.bed (this is a bed file of any regions you wish to exclude ex. telomeres and centromeres), dna sequence directory. Under the each cell type you should have a folder called `genomic_features`
 containing the atac and ctcf bigwigs (make sure to name your files the **exact** same!) and a `hic_matrix` containing a npz file per chromosome. There can be multiple cell types (and thus multiple atac/ctcf/hic files) but only one copy of the dna sequence and centroleo.bed is needed per assembly. 
 
+```docs
   Usage:
     corigami-train [options]
     
@@ -275,26 +276,28 @@ containing the atac and ctcf bigwigs (make sure to name your files the **exact**
 
 ## Citation
 
-If you use the C-Origami code in your project, please cite the bioRxiv paper:
+If you use C.Origami in your project, please cite the following paper:
 
 ```BibTeX
-@inproceedings{tan2020,
-    title={Cell type-specific prediction of 3D chromatin architecture},
-    author={Jimin Tan and Javier Rodriguez-Hernaez and Theodore Sakellaropoulos and Francesco Boccalatte and Iannis Aifantis and Jane Skok and David Fenyö and Bo Xia and Aristotelis Tsirigos},
-    journal = {bioRxiv e-prints},
-    archivePrefix = "bioRxiv",
-    doi = {10.1101/2022.03.05.483136},
-    year={2022}
+@article{tan2023nbt,
+	title = {Cell-type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening},
+	author = {Tan, Jimin and Shenker-Tauris, Nina and Rodriguez-Hernaez, Javier and Wang, Eric and Sakellaropoulos, Theodore and Boccalatte, Francesco and Thandapani, Palaniraja and Skok, Jane and Aifantis, Iannis and Feny{\"o}, David and Xia, Bo and Tsirigos, Aristotelis},
+	journal = {Nature Biotechnology},
+	date = {2023/01/09},
+	doi = {10.1038/s41587-022-01612-8},
+	id = {Tan2023},
+	isbn = {1546-1696},
+	url = {https://doi.org/10.1038/s41587-022-01612-8},
+	year = {2023},
+ publisher={Nature Publishing Group}
 }
 ```
 
 ## List of Papers
 
-The following lists titles of papers from the C-Origami project. 
+The following lists titles of papers from the C.Origami project. 
 
-Cell type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening
-Jimin Tan, Nina Shenker-Tauris, Javier Rodriguez-Hernaez, Eric Wang, Theodore Sakellaropoulos, Francesco Boccalatte, Palaniraja Thandapani, Jane Skok, Iannis Aifantis, David Fenyö, Bo Xia, Aristotelis Tsirigos
-bioRxiv 2022.03.05.483136; doi: https://doi.org/10.1101/2022.03.05.483136
+Tan et al. Cell-type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening. Nat Biotechnol (2023). https://doi.org/10.1038/s41587-022-01612-8
 
 [Models](#download-model-and-other-relevant-resource-files) |
 [GitHub](https://github.com/tanjimin/C.Origami) |
