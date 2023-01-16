@@ -253,6 +253,7 @@ root
 **Note**: if you wish to use another assembly (e.g. mm10) please make sure your data directory is structured as above with the assembly name --> cell type, centrotelo.bed (this is a bed file of any regions you wish to exclude ex. telomeres and centromeres), dna sequence directory. Under the each cell type you should have a folder called `genomic_features`
 containing the atac and ctcf bigwigs (make sure to name your files the **exact** same!) and a `hic_matrix` containing a npz file per chromosome. There can be multiple cell types (and thus multiple atac/ctcf/hic files) but only one copy of the dna sequence and centroleo.bed is needed per assembly. 
 
+```docs
   Usage:
     corigami-train [options]
     
