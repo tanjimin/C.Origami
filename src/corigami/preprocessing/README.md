@@ -11,8 +11,10 @@ CTCF pipeline (found under `./src/corigami/preprocessing/ctcf/ctcf_pipeline.sh`)
 3. After the sns job is done, run `ctcf_norm.sh` to get the normalized CTCF ChIP-seq profile under name `./sns/BIGWIG/final.bigwig`. **This file is the CTCF bigwig file that we use as C.Origami input**.
 
 
+
 ## ATAC-seq pipeline 
 ATAC pipeline (found under `./src/corigami/preprocessing/atac/atac_pipeline.sh`) can be run with the following steps:
+
 
 1. Edit all four `rep{n}-end{m}.txt` (n, m = 1 or 2) files that indicates fastq files download links of two replicates and two read ends.
 2. Run `atac_pipeline` to generate [sns-atac](https://igordot.github.io/sns/routes/atac.html) output. The target bigwig is named `./sns/BIGWIG/sub_merged.bin1.rpkm.bw`. **This file is the ATAC-seq bigwig file that we use as C.Origami input**.
