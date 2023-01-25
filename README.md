@@ -290,7 +290,6 @@ If you use C.Origami in your project, please cite the following paper:
 	url = {https://doi.org/10.1038/s41587-022-01612-8},
 	year = {2023},
 	publisher = {Nature Publishing Group}
-}
 ```
 
 ## List of Papers
