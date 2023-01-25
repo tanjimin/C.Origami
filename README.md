@@ -4,7 +4,7 @@
 [GitHub](https://github.com/tanjimin/C.Origami) |
 [Publications](#list-of-papers)
 
-This is the official implementation of C.Origami model from *Cell type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening* (Tan et al. *Nat Biotechnol* 2023. https://doi.org/10.1038/s41587-022-01612-8). C.Origami is a deep neural network model enables *de novo* cell-type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
+This is the official implementation of C.Origami model from Cell type-specific prediction of 3D chromatin organization enables high-throughput in silico genetic screening (Tan et al. *Nat Biotechnol* 2023. https://doi.org/10.1038/s41587-022-01612-8). C.Origami is a deep neural network model enables *de novo* cell-type-specific chromatin architecture predictions. C.Origami originates from the Origami architecture that incorporates DNA sequence and cell type-specific features for downstream tasks. It can predict the effect of aberrant genome reorganization such as translocations. In addition, it can be used to perform high-throughput *in silico* genetic screening to identify chromatin related *trans*-acting factors. 
 
 ## Google Colab
 
