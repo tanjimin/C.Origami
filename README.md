@@ -54,10 +54,10 @@ pip install -e .
 | File name | Content | 
 | - | - | 
 | [corigami_data.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) | DNA reference sequence, CTCF ChIP-seq(IMR-90), ATAC-seq(IMR-90), Hi-C matrix(IMR-90), pretrained model weights | 
-| [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) | CTCF ChIP-seq(GM12878), ATAC-seq(GM12878), Hi-C matrix(GM12878) | 
+| [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data_gm12878_add_on.tar.gz?download=1) | CTCF ChIP-seq(GM12878), ATAC-seq(GM12878), Hi-C matrix(GM12878) | 
 
 To run inference or training, you may download [corigami_data.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) which contains the training data from IMR-90 cell line, and pretrained model weights. 
-To test performance on GM12878 *de novo* prediction, you need to additionally download the add-on data file [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) and unzip it under `corigami_data/data/hg38`.
+To test performance on GM12878 *de novo* prediction, you need to additionally download the add-on data file [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data_gm12878_add_on.tar.gz?download=1) and unzip it under `corigami_data/data/hg38`.
 
 ### Prediction with DNA sequence, CTCF ChIP-seq, and ATAC-seq data 
 In order to use our pipeline we require the sequencing data to be pre-processed. Reference DNA sequence is included in the corigami_data file provided above.The input for both the CTCF and ATAC data should be in the form of a bigwig (bw) file. The bigwig should be normalized to the total number of reads. Data quality can be inspected using an applications such as [IGV](https://igv.org).
@@ -289,8 +289,7 @@ If you use C.Origami in your project, please cite the following paper:
 	isbn = {1546-1696},
 	url = {https://doi.org/10.1038/s41587-022-01612-8},
 	year = {2023},
-	publisher={Nature Publishing Group}
-}
+	publisher = {Nature Publishing Group}
 ```
 
 ## List of Papers
