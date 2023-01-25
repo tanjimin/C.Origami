@@ -19,22 +19,19 @@ conda create -n corigami python=3.9
 conda activate corigami
 ```
 
-First install PyTorch according to the instructions on the
-[PyTorch Website](https://pytorch.org/get-started/) for your operating system and CUDA setup.  
+First install PyTorch according to the instructions on the [PyTorch Website](https://pytorch.org/get-started/) for your operating system and CUDA setup.  
 
 To install C.Origami, run the following command according to your use cases:
 
-**For inference ONLY dependency use:**
+**For inference ONLY dependency:**
 ```bash
 pip install corigami
 ```
 
-**For full dependency used for training use:**
+**For training (includes additional dependencies):**
 ```bash
  pip install corigami[training]
 ```
-
-`pip` will handle all package dependencies. 
 
 ### Installing Directly from Source
 
@@ -56,18 +53,17 @@ pip install -e .
 | [corigami_data.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) | DNA reference sequence, CTCF ChIP-seq(IMR-90), ATAC-seq(IMR-90), Hi-C matrix(IMR-90), pretrained model weights | 
 | [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data_gm12878_add_on.tar.gz?download=1) | CTCF ChIP-seq(GM12878), ATAC-seq(GM12878), Hi-C matrix(GM12878) | 
 
+The resources above are hosted on Zenodo: https://zenodo.org/record/7226561.
+
 To run inference or training, you may download [corigami_data.tar.gz](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) which contains the training data from IMR-90 cell line, and pretrained model weights. 
 To test performance on GM12878 *de novo* prediction, you need to additionally download the add-on data file [corigami_data_gm12878_add_on.tar.gz](https://zenodo.org/record/7226561/files/corigami_data_gm12878_add_on.tar.gz?download=1) and unzip it under `corigami_data/data/hg38`.
-
-### Prediction with DNA sequence, CTCF ChIP-seq, and ATAC-seq data 
-In order to use our pipeline we require the sequencing data to be pre-processed. Reference DNA sequence is included in the corigami_data file provided above.The input for both the CTCF and ATAC data should be in the form of a bigwig (bw) file. The bigwig should be normalized to the total number of reads. Data quality can be inspected using an applications such as [IGV](https://igv.org).
 
 
 # Inference
 
 C.Origami can perform de novo prediction of cell type-specific chromatin architecture using both DNA sequence features and cell type-specific genomic information.
 
-For any inference application, download one of our pre-trained models or use your own model. C.Origami is pre-trained on the human IMR-90 cell line (hg38 assembly). Before inference, please download dataset and change path according to the instruction.
+For any inference application, download our pre-trained model or use your own model. C.Origami is pre-trained on the human IMR-90 cell line (hg38 assembly). Before inference, please download dataset and change paths according to the instruction.
 
 Inference allows you to pick between 3 tasks: **predict**, **perturbation**, or **screening**. Examples for each one and the required parameters are under the `examples` folder. 
 
@@ -175,7 +171,7 @@ Screening can be done only for one chromosome at a time. The end position unless
 
 # Training
 
-You may train your own model on another human or cell mouse line. 
+You may train your own model on another human or mouse cells. 
 
 ### Genomic Features
 
@@ -189,7 +185,7 @@ Experimental Hi-C matrices are needed for training. We recommend using [HiC-Pro]
 
 ### Data directory
 
-C.origami expects the input data to be structured in the following way:
+C.Origami training pipeline expects the input data to be structured in the following way:
 ```docs
 root
 └── hg38
@@ -248,7 +244,7 @@ root
             ├── chr9.npy
             └── chrX.npy
 ```
-**Note**: if you choose to download the data from [link above](https://zenodo.org/record/7226561/files/corigami_data.tar.gz?download=1) the data directory will automatically be structured in this way. Then when training set your `--data-root` option to the root directory as shown in the tree above. 
+**Note**: if you choose to download the data from [link above](https://zenodo.org/record/7226561) the data directory will automatically be structured in this way. Then when training set your `--data-root` option to the root directory as shown in the tree above. 
 
 **Note**: if you wish to use another assembly (e.g. mm10) please make sure your data directory is structured as above with the assembly name --> cell type, centrotelo.bed (this is a bed file of any regions you wish to exclude ex. telomeres and centromeres), dna sequence directory. Under the each cell type you should have a folder called `genomic_features`
 containing the atac and ctcf bigwigs (make sure to name your files the **exact** same!) and a `hic_matrix` containing a npz file per chromosome. There can be multiple cell types (and thus multiple atac/ctcf/hic files) but only one copy of the dna sequence and centroleo.bed is needed per assembly. 
@@ -289,8 +285,7 @@ If you use C.Origami in your project, please cite the following paper:
 	isbn = {1546-1696},
 	url = {https://doi.org/10.1038/s41587-022-01612-8},
 	year = {2023},
-	publisher = {Nature Publishing Group}
-	}
+	publisher = {Nature Publishing Group}}
 ```
 
 ## List of Papers
