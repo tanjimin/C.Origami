@@ -220,29 +220,29 @@ root
         │   ├── atac.bw
         │   └── ctcf_log2fc.bw
         └── hic_matrix
-            ├── chr10.npy
-            ├── chr11.npy
-            ├── chr12.npy
-            ├── chr13.npy
-            ├── chr14.npy
-            ├── chr15.npy
-            ├── chr16.npy
-            ├── chr17.npy
-            ├── chr18.npy
-            ├── chr19.npy
-            ├── chr1.npy
-            ├── chr20.npy
-            ├── chr21.npy
-            ├── chr22.npy
-            ├── chr2.npy
-            ├── chr3.npy
-            ├── chr4.npy
-            ├── chr5.npy
-            ├── chr6.npy
-            ├── chr7.npy
-            ├── chr8.npy
-            ├── chr9.npy
-            └── chrX.npy
+            ├── chr10.npz
+            ├── chr11.npz
+            ├── chr12.npz
+            ├── chr13.npz
+            ├── chr14.npz
+            ├── chr15.npz
+            ├── chr16.npz
+            ├── chr17.npz
+            ├── chr18.npz
+            ├── chr19.npz
+            ├── chr1.npz
+            ├── chr20.npz
+            ├── chr21.npz
+            ├── chr22.npz
+            ├── chr2.npz
+            ├── chr3.npz
+            ├── chr4.npz
+            ├── chr5.npz
+            ├── chr6.npz
+            ├── chr7.npz
+            ├── chr8.npz
+            ├── chr9.npz
+            └── chrX.npz
 ```
 **Note**: if you choose to download the data from [link above](https://zenodo.org/record/7226561) the data directory will automatically be structured in this way. Then when training set your `--data-root` option to the root directory as shown in the tree above. 
 
