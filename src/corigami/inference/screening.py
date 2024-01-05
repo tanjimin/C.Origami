@@ -103,7 +103,7 @@ def screening(output_path, celltype, chr_name, screen_start, screen_end, perturb
         diff_maps = np.append(diff_maps, np.expand_dims(diff_map, 0), axis = 0)
         perturb_starts.append(w_start)
         perturb_ends.append(w_start + perturb_width)
-    impact_scores = np.abs(diff_maps.mean(axis = (1, 2)))
+    impact_scores = np.abs(diff_maps).mean(axis = (1, 2))
     plot = plot_utils.MatrixPlotScreen(output_path, perturb_starts, perturb_ends, impact_scores, diff_maps, preds, preds_deletion, 'screening', celltype, chr_name, screen_start, screen_end, perturb_width, step_size, plot_impact_score)
     figure = plot.plot()
     plot.save_data(figure, save_pred, save_deletion, save_diff, save_impact_score, save_bedgraph)
