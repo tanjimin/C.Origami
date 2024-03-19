@@ -168,6 +168,9 @@ Screening can be done only for one chromosome at a time. The end position unless
   <img  src="https://github.com/tanjimin/C.Origami/blob/dev/examples/imgs/chr2_screen_1250000_2250000_width_1000_step_1000.png">
   </p>
 
+### Evaluation Metrics
+
+Implementation of the four evaluation metrics (MSE, Insulation Score, Observed vs Expected intensity, Distance-stratified intensity) is located at `src/corigami/inference/utils/metrics`.
 
 # Training
 
