@@ -90,19 +90,11 @@ class ChromosomeDataset(Dataset):
             mat_r = mat
         return seq_r, features_r, mat_r
 
-    def complement(self, seq, chance = 0.5):
+    def complement(self, seq):
         '''
         Complimentary sequence
         '''
-        r_bool = np.random.rand(1)
-        if r_bool < chance:
-            seq_comp = np.concatenate([seq[:, 1:2],
-                                       seq[:, 0:1],
-                                       seq[:, 3:4],
-                                       seq[:, 2:3],
-                                       seq[:, 4:5]], axis = 1)
-        else:
-            seq_comp = seq
+        seq_comp = seq[1, 0, 3, 2, 4]
         return seq_comp
 
     def get_data_at_interval(self, start, end):
